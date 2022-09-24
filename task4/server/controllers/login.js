@@ -23,7 +23,12 @@ const loginUser = async (req, res) => {
         expiresIn: "1d",
       });
 
-      res.json({ name: updatedUser.name, email: updatedUser.email, token });
+      res.json({
+        name: updatedUser.name,
+        email: updatedUser.email,
+        status: updatedUser.status,
+        token,
+      });
     } else res.status(404).json({ error: "Invalid credentials." });
   } catch (error) {
     return res.status(500).json(error);

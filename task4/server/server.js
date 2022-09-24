@@ -16,6 +16,9 @@ app.use(morgan("tiny"));
 app.use(cors());
 
 app.use("/api", userRoutes);
+app.use("*", (req, res) => {
+  res.status(404).json("404 - Not Found");
+});
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server running on ${PORT} - port`));
